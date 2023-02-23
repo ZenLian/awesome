@@ -1,0 +1,95 @@
+* {
+    pallete-blue: #89b4fa;
+    pallete-text: #cdd6f4;
+    pallete-overlay0: #6c7086;
+    pallete-base: #1e1e2e;
+    pallete-mantle: #181825;
+
+    width: 35%;
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    /* height: 35%; */
+    border: 3px;
+    border-color: @pallete-base;
+    background-color: @pallete-base;
+}
+
+mainbox {
+    background-color: @pallete-base;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @pallete-base;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @pallete-blue;
+    padding: 6px;
+    text-color: @pallete-base;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @pallete-text;
+    background-color: @pallete-base;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 0px 0px 20px;
+    columns: 1;
+    lines: 6;
+    background-color: @pallete-base;
+}
+
+element {
+    padding: 5px;
+    background-color: @pallete-base;
+    text-color: @pallete-text  ;
+}
+
+element-icon {
+    size: 3ch;
+}
+
+element selected {
+    background-color: @pallete-blue;
+    text-color: @pallete-base;
+    border-radius: 3px;
+}
+
+mode-switcher {
+    spacing: 0;
+}
+
+button {
+    padding: 10px;
+    background-color: @pallete-mantle;
+    text-color: @pallete-overlay0;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @pallete-base;
+  text-color: @pallete-blue;
+}
+
