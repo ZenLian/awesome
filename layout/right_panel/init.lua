@@ -45,10 +45,20 @@ M.new = function(s)
     widget = wibox.container.background,
     bg = theme.palette.base .. "33",
   }
-  backdrop:buttons { awful.button({}, 1, function()
-    panel:close()
-  end) }
+  backdrop:buttons {
+    awful.button({}, 1, function()
+      panel:close()
+    end),
+  }
 
+  panel:buttons {
+    awful.button({}, 2, function()
+      panel:close()
+    end),
+    awful.button({}, 3, function()
+      panel:close()
+    end),
+  }
   panel:setup {
     layout = wibox.layout.align.horizontal,
     nil,
@@ -76,7 +86,7 @@ M.new = function(s)
               id = "notification_pane",
               visible = false,
               layout = wibox.layout.fixed.vertical,
-              wibox.widget.textbox("notif"),
+              require("layout.right_panel.notification")(),
             },
           },
         },
@@ -112,13 +122,6 @@ M.new = function(s)
   function panel:toggle()
     panel.visible = not panel.visible
   end
-
-  -- DEBUG
-  awful.keyboard.append_global_keybindings {
-    awful.key({ "Mod4", "Mod1" }, "n", function()
-      s.right_panel:toggle()
-    end),
-  }
 
   return panel
 end

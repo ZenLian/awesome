@@ -116,7 +116,8 @@ local function init()
   theme.menu_width = dpi(150)
   -- theme.menu_border_radius = 200
   theme.menu_border_width = 0
-  theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_normal, theme.fg_focus)
+  theme.awesome_icon = theme_path .. "/icons/awesome.svg"
+  -- theme_assets.awesome_icon(theme.menu_height, theme.bg_normal, theme.fg_focus)
   -- }}}
 
   ---------------------

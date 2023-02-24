@@ -38,7 +38,7 @@ M.new = function(args)
   local slider_icon = wibox.widget {
     widget = wibox.widget.textbox,
     -- font = beautiful.icon_var .. "17",
-    font = utils.icon_font(16),
+    font = utils.icon_font(),
     align = "center",
     valign = "center",
   }

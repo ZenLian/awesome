@@ -15,15 +15,6 @@ local cpu = widget.ringbar {
 awesome.connect_signal("service::cpu", function(result)
   cpu.value = result.usage
 end)
-awful.tooltip {
-  objects = { cpu },
-  timeout = 5,
-  timer_function = function()
-    local result = service.cpu.get()
-    local usage = result and result.usage or "N/A"
-    return string.format("cpu: %s%%", usage)
-  end,
-}
 
 local memory = widget.ringbar {
   image = theme.icons("memory"),
