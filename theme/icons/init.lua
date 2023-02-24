@@ -28,6 +28,11 @@ local icons = {
   switch_on = "󰔡",
   switch_off = "󰨙",
 
+  close = "󰅖",
+  view_dashboard = "󰕮",
+  message = "󰍡",
+  message_badge = "󱥁",
+
   -- apps
   -- web = "",
   web = "󰇩",
@@ -75,7 +80,7 @@ local ICON_PATH = gears.filesystem.get_configuration_dir() .. "theme/icons/%s.sv
 return setmetatable(icons, {
   __call = function(_, name, color)
     local icon = ICON_PATH:format(name)
-    if color ~= false then
+    if color then
       return gears.color.recolor_image(icon, color or beautiful.fg_normal)
     end
     return icon

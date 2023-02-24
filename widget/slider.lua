@@ -23,7 +23,7 @@ M.new = function(args)
     widget = wibox.widget.slider,
     bar_shape = gears.shape.rounded_bar,
     bar_height = dpi(5),
-    bar_color = theme.palette.surface2,
+    bar_color = theme.palette.surface0,
     bar_margins = { bottom = dpi(18), top = dpi(18) },
     bar_active_color = theme.palette.blue,
     handle_color = theme.palette.blue,
@@ -38,6 +38,7 @@ M.new = function(args)
   local slider_icon = wibox.widget {
     widget = wibox.widget.textbox,
     -- font = beautiful.icon_var .. "17",
+    font = utils.icon_font(16),
     align = "center",
     valign = "center",
   }

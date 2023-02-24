@@ -17,6 +17,14 @@ local line_separator = wibox.widget {
   widget = wibox.widget.separator,
 }
 
+local vertical_separator = wibox.widget {
+  widget = wibox.widget.separator,
+  orientation = "vertical",
+  forced_width = dpi(1),
+  span_ratio = 1,
+  color = theme.palette.crust,
+}
+
 M.new = function(s)
   local panel_width = dpi(config.layout.right_panel.width)
   local panel = wibox {
@@ -72,7 +80,11 @@ M.new = function(s)
             },
           },
         },
-        require("layout.right_panel.navigation")(s),
+        {
+          layout = wibox.layout.fixed.horizontal,
+          vertical_separator,
+          require("layout.right_panel.navigation")(s),
+        },
       },
     },
   }
@@ -87,7 +99,9 @@ M.new = function(s)
         p.visible = false
       end
     end
+    awesome.emit_signal("layout::right_panel::switch", name)
   end
+  panel:switch("dashboard")
 
   function panel:open()
     panel.visible = true

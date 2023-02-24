@@ -14,7 +14,7 @@ local new = function(s)
     layout = wibox.layout.fixed.vertical,
     spacing = dpi(10),
     require("layout.right_panel.dashboard.settings")(),
-    -- require("layout.right_panel.dashboard.monitor")(),
+    require("layout.right_panel.dashboard.monitor")(),
   }
   return dashboard
 end

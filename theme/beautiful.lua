@@ -19,7 +19,7 @@ local function init()
   theme.font = O.font.family .. " " .. O.font.size
   -- theme.wallpaper = theme_path .. "/wallpapers/LockScreen/arch-rainbow-1920x1080.png"
   theme.wallpaper = theme_path .. "/wallpapers/LockScreen/doggocat.png"
-  theme.icon_theme = "/usr/share/icons/Papirus"
+  theme.icon_theme = "Papirus"
   -- }}}
   --
 

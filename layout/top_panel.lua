@@ -22,46 +22,6 @@ local top_panel = function(s)
   s.taglist = widget.taglist(s)
   s.tasklist = widget.tasklist(s)
 
-  -- {{{ TODO: systat: move to somewhere else
-  local cpu = widget.iconic {
-    icon = icons.cpu,
-    desc = "N/A",
-    fg = comp.wibar.cpu.fg,
-  }
-  awesome.connect_signal("service::cpu", function(result)
-    local text = string.format("%s%%", result.usage)
-    cpu.desc.markup = utils.markup.fg(text, comp.wibar.cpu.fg)
-  end)
-
-  local mem = widget.iconic {
-    icon = icons.memory,
-    desc = "N/A",
-    fg = comp.wibar.memory.fg,
-  }
-  awesome.connect_signal("service::memory", function(result)
-    local text = string.format("%s%%", result.perc)
-    mem.desc.markup = utils.markup.fg(text, comp.wibar.memory.fg)
-  end)
-
-  local thermal = widget.iconic {
-    icon = icons.thermal,
-    desc = "N/A",
-    fg = comp.wibar.thermal.fg,
-  }
-  awesome.connect_signal("service::thermal", function(result)
-    local text = string.format("%s°C", result.thermal)
-    thermal.desc.markup = utils.markup.fg(text, comp.wibar.thermal.fg)
-  end)
-
-  s.systat = wibox.widget {
-    cpu,
-    mem,
-    thermal,
-    layout = wibox.layout.fixed.horizontal,
-    spacing = dpi(8),
-  }
-  --}}}
-
   s.volume = widget.volume()
   s.battery = widget.battery()
   s.wifi = widget.wifi()
@@ -103,7 +63,6 @@ local top_panel = function(s)
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(6),
         s.systray,
-        s.systat,
         s.syscontrol,
         s.clock,
         s.layoutbox,

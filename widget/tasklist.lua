@@ -1,10 +1,8 @@
 local wibox = require("wibox")
 local awful = require("awful")
+local menubar = require("menubar")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local comp = require("theme.comp")
-local icons = require("theme.icons")
-local utils = require("utils")
 
 local tasklist_buttons = {
   awful.button({}, 1, function(c)
@@ -24,15 +22,10 @@ local tasklist_buttons = {
   end),
 }
 
-local tasklist_update = function(self, c)
-  local textbox = self:get_children_by_id("clientclass")[1]
-  local fg = comp.tasklist.fg
-  if client.focus == c then
-    fg = comp.tasklist.focus.fg
-  elseif c.minimized then
-    fg = comp.tasklist.minimized.fg
-  end
-  textbox.markup = utils.markup.fg(c.class, fg)
+local tasklist_create = function(self, c)
+  local imagebox = self:get_children_by_id("clienticon")[1]
+  local path = menubar.utils.lookup_icon(c.class) or menubar.utils.lookup_icon(c.class:lower())
+  imagebox.image = path
 end
 
 local tasklist = function(s)
@@ -46,25 +39,16 @@ local tasklist = function(s)
     widget_template = {
       {
         {
-          id = "clientclass",
-          widget = wibox.widget.textbox,
+          id = "clienticon",
+          widget = wibox.widget.imagebox,
         },
-        -- {
-        --   id = "clienticon",
-        --   widget = awful.widget.clienticon,
-        -- },
-        -- margins = { left = dpi(8), right = dpi(8), top = dpi(3), bottom = dpi(3) },
-        margins = dpi(4),
+        margins = dpi(3),
         widget = wibox.container.margin,
       },
       id = "background_role",
       widget = wibox.container.background,
-      -- forced_width = dpi(32),
-      -- create_callback = function(self, c)
-      --   self:get_children_by_id("clienticon")[1].client = c
-      -- end,
-      create_callback = tasklist_update,
-      update_callback = tasklist_update,
+      create_callback = tasklist_create,
+      -- update_callback = tasklist_update,
     },
     buttons = tasklist_buttons,
   }

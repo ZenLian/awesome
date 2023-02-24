@@ -32,10 +32,6 @@ local taglist_buttons = {
   end),
 }
 
-local taglist_update = function(self, c)
-  --
-end
-
 local taglist = function(s)
   return awful.widget.taglist {
     screen = s,

@@ -1,1 +1,1 @@
-- [ ] implement freedesktop icons search on tasklist
+- [x] implement freedesktop icons search on tasklist
