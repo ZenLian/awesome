@@ -49,7 +49,9 @@ local function build_power_widget(name, icon, callback)
     },
   }
 
-  item:connect_signal("button::release", callback)
+  item:connect_signal("button::release", function()
+    callback()
+  end)
 
   item:connect_signal("mouse::enter", function()
     background.bg = hover_bg
@@ -66,7 +68,7 @@ local items = {
     icon = icons("power"),
     key = "p",
     command = function()
-      awful.spawn("systemctl poweroff")
+      awful.spawn.with_shell("systemctl poweroff")
       awesome.emit_signal("layout::exit_screen::hide")
     end,
   },
@@ -75,7 +77,10 @@ local items = {
     icon = icons("restart"),
     key = "r",
     command = function()
-      awful.spawn("systemctl reboot")
+      naughty.notification {
+        text = "reboot!",
+      }
+      awful.spawn.with_shell("systemctl reboot")
       awesome.emit_signal("layout::exit_screen::hide")
     end,
   },
@@ -85,7 +90,7 @@ local items = {
     key = "s",
     command = function()
       awesome.emit_signal("layout::exit_screen::hide")
-      awful.spawn("systemctl suspend")
+      awful.spawn.with_shell("systemctl suspend")
     end,
   },
   {
@@ -144,9 +149,9 @@ M.new = function(s)
   }
 
   exit_screen:buttons {
-    awful.button({}, 1, function()
-      awesome.emit_signal("layout::exit_screen::hide")
-    end),
+    -- awful.button({}, 1, function()
+    --   awesome.emit_signal("layout::exit_screen::hide")
+    -- end),
     awful.button({}, 2, function()
       awesome.emit_signal("layout::exit_screen::hide")
     end),
