@@ -7,20 +7,12 @@ local utils = require("utils")
 local theme = require("theme")
 local config = require("config")
 
-local M = {}
-
-local new = function(s)
-  local dashboard = wibox.widget {
-    layout = wibox.layout.fixed.vertical,
-    spacing = dpi(10),
-    require("layout.right_panel.dashboard.settings")(),
-    require("layout.right_panel.dashboard.monitor")(),
-  }
-  return dashboard
-end
-
-return setmetatable(M, {
-  __call = function(_, ...)
-    return new(...)
-  end,
-})
+local monitor = require("layout.right_panel.dashboard.monitor")
+local settings = require("layout.right_panel.dashboard.settings")
+local dashboard = wibox.widget {
+  layout = wibox.layout.fixed.vertical,
+  spacing = dpi(10),
+  settings,
+  monitor,
+}
+return dashboard

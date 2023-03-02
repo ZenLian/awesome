@@ -2,6 +2,7 @@ local wibox = require("wibox")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local gears = require("gears")
 local icons = require("theme.icons")
 local utils = require("utils")
 local theme = require("theme")
@@ -59,6 +60,8 @@ M.new = function(s)
       panel:close()
     end),
   }
+
+  local dashboard = require("layout.right_panel.dashboard")
   panel:setup {
     layout = wibox.layout.align.horizontal,
     nil,
@@ -75,18 +78,23 @@ M.new = function(s)
           widget = wibox.container.margin,
           margins = dpi(10),
           {
-            layout = wibox.layout.stack,
+            layout = wibox.layout.fixed.vertical,
+            require("layout.right_panel.headline"),
+            spacing = dpi(10),
             {
-              id = "dashboard_pane",
-              visible = true,
-              layout = wibox.layout.fixed.vertical,
-              require("layout.right_panel.dashboard")(),
-            },
-            {
-              id = "notification_pane",
-              visible = false,
-              layout = wibox.layout.fixed.vertical,
-              require("layout.right_panel.notification")(),
+              layout = wibox.layout.stack,
+              {
+                id = "dashboard_pane",
+                visible = true,
+                layout = wibox.layout.fixed.vertical,
+                dashboard,
+              },
+              {
+                id = "notification_pane",
+                visible = false,
+                layout = wibox.layout.fixed.vertical,
+                require("layout.right_panel.notification")(),
+              },
             },
           },
         },

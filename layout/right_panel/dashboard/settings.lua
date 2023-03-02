@@ -56,22 +56,20 @@ awesome.connect_signal("service::brightness", function(result, src)
   end
 end)
 
-local new = function()
-  return wibox.widget {
-    widget = wibox.container.background,
-    bg = theme.palette.base,
-    shape = utils.shape.rrect(5),
+local wdg = wibox.widget {
+  widget = wibox.container.background,
+  bg = theme.palette.base,
+  shape = utils.shape.rrect(5),
+  {
+    widget = wibox.container.margin,
+    margins = dpi(12),
     {
-      widget = wibox.container.margin,
-      margins = dpi(12),
-      {
-        layout = wibox.layout.fixed.vertical,
-        spacing = dpi(12),
-        volume,
-        brightness,
-      },
+      layout = wibox.layout.fixed.vertical,
+      spacing = dpi(12),
+      volume,
+      brightness,
     },
-  }
-end
+  },
+}
 
-return new
+return wdg

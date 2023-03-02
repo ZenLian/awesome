@@ -40,24 +40,20 @@ awesome.connect_signal("service::disk", function(result)
   disk.value = tonumber(result.perc)
 end)
 
-local new = function()
-  return wibox.widget {
-    widget = wibox.container.background,
-    bg = theme.palette.base,
-    shape = utils.shape.rrect(5),
+return wibox.widget {
+  widget = wibox.container.background,
+  bg = theme.palette.base,
+  shape = utils.shape.rrect(5),
+  {
+    widget = wibox.container.margin,
+    margins = dpi(12),
     {
-      widget = wibox.container.margin,
-      margins = dpi(12),
-      {
-        layout = wibox.layout.fixed.horizontal,
-        spacing = dpi(12),
-        cpu,
-        memory,
-        thermal,
-        disk,
-      },
+      layout = wibox.layout.fixed.horizontal,
+      spacing = dpi(12),
+      cpu,
+      memory,
+      thermal,
+      disk,
     },
-  }
-end
-
-return new
+  },
+}

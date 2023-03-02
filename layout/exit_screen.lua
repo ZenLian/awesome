@@ -149,9 +149,9 @@ M.new = function(s)
   }
 
   exit_screen:buttons {
-    -- awful.button({}, 1, function()
-    --   awesome.emit_signal("layout::exit_screen::hide")
-    -- end),
+    awful.button({}, 1, function()
+      awesome.emit_signal("layout::exit_screen::hide")
+    end),
     awful.button({}, 2, function()
       awesome.emit_signal("layout::exit_screen::hide")
     end),
