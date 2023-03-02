@@ -111,7 +111,7 @@ local function init()
   theme.menu_bg = p.surface
   theme.menu_fg = theme.fg_normal
   theme.menu_font = O.font.family .. " 10"
-  theme.menu_submenu_icon = icons.get_mdi("menu-right-outline", theme.fg_normal) --sys_themes_path .. "default/submenu.png"
+  theme.menu_submenu_icon = theme_path .. "/icons/chevron-right.svg"
   theme.menu_height = dpi(25)
   theme.menu_width = dpi(150)
   -- theme.menu_border_radius = 200

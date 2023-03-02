@@ -7,7 +7,7 @@ local config = {
     terminal = "alacritty",
     editor = "alacritty -e nvim",
     browser = "microsoft-edge-stable",
-    explorer = "alacritty -e vifm",
+    explorer = "thunar",
   },
   keys = {
     modkey = "Mod4",
