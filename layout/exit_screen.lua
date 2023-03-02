@@ -107,7 +107,7 @@ local items = {
     key = "l",
     command = function()
       awesome.emit_signal("layout::exit_screen::hide")
-      awful.spawn.with_shell("$HOME/.config/awesome/scripts/lock.sh")
+      awful.spawn.with_shell("$HOME/.config/awesome/extra/lock.sh")
     end,
   },
 }
@@ -149,9 +149,9 @@ M.new = function(s)
   }
 
   exit_screen:buttons {
-    awful.button({}, 1, function()
-      awesome.emit_signal("layout::exit_screen::hide")
-    end),
+    -- awful.button({}, 1, function()
+    --   awesome.emit_signal("layout::exit_screen::hide")
+    -- end),
     awful.button({}, 2, function()
       awesome.emit_signal("layout::exit_screen::hide")
     end),
