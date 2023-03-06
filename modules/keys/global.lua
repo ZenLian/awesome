@@ -109,9 +109,12 @@ awful.keyboard.append_global_keybindings {
 --- {{{ tags
 awful.keyboard.append_global_keybindings {
 
+  -- last tag
   awful.key({ modkey }, "`", awful.tag.history.restore, { description = "go back", group = "tag" }),
-  awful.key({ modkey, ctrl }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-  awful.key({ modkey, ctrl }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
+
+  -- prev/next tag
+  awful.key({ modkey, ctrl }, "h", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+  awful.key({ modkey, ctrl }, "l", awful.tag.viewnext, { description = "view next", group = "tag" }),
 
   -- view tag only
   awful.key {
@@ -270,12 +273,12 @@ awful.keyboard.append_global_keybindings {
   -- awful.key({ modkey, shift }, "l", function()
   --   awful.tag.incnmaster(-1, nil, true)
   -- end, { description = "decrease the number of master clients", group = "layout" }),
-  awful.key({ modkey, ctrl }, "h", function()
-    awful.tag.incncol(1, nil, true)
-  end, { description = "increase the number of columns", group = "layout" }),
-  awful.key({ modkey, ctrl }, "l", function()
-    awful.tag.incncol(-1, nil, true)
-  end, { description = "decrease the number of columns", group = "layout" }),
+  -- awful.key({ modkey, ctrl }, "h", function()
+  --   awful.tag.incncol(1, nil, true)
+  -- end, { description = "increase the number of columns", group = "layout" }),
+  -- awful.key({ modkey, ctrl }, "l", function()
+  --   awful.tag.incncol(-1, nil, true)
+  -- end, { description = "decrease the number of columns", group = "layout" }),
 }
 
 -- {{{ select layouts
