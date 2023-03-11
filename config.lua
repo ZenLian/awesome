@@ -31,7 +31,6 @@ local config = {
   },
 
   theme = {
-    --font = "JetBrainsMono Nerd Font 10"
     font = {
       -- family = "Material Design Icons",
       -- family = "JetBrainsMono Nerd Font",
@@ -44,8 +43,10 @@ local config = {
       -- family = "Caskaydia Cove Nerd Font",
       -- family = "DejaVuSansMono Nerd Font",
       family = "Material Design Icons Desktop",
-      -- family = "JetBrainsMono Nerd Font",
       size = 12,
+    },
+    random_wallpaper = {
+      auto_timeout = 15, -- auto change wallpaper every 1 minutes
     },
   },
 }

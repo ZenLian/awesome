@@ -159,7 +159,7 @@ configuration {
     display-window: "   Window";
     display-combi:  "   All ";
     sidebar-mode: true;
-    dpi: 192;
+    /* dpi: 192; */
     matching: "fuzzy";
     /* font: "mono 12"; */
     /* font: "JetBrainsMono Nerd Font 14"; */

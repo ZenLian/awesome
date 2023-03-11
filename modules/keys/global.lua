@@ -30,6 +30,7 @@ awful.keyboard.append_global_keybindings {
 }
 -- }}}
 
+local rofi_config = "$HOME/.config/awesome/extra/rofi/config.rasi"
 -- {{{ launchers
 awful.keyboard.append_global_keybindings {
   awful.key({ modkey }, "Return", function()
@@ -53,10 +54,10 @@ awful.keyboard.append_global_keybindings {
   --   awful.spawn(C.apps.launcher)
   -- end, { description = "rofi drun", group = "launcher" }),
   awful.key({ modkey }, "p", function()
-    awful.spawn.with_shell(C.apps.searcher)
+    awful.spawn.with_shell(("rofi -show combi -config %s -dpi %s"):format(rofi_config, awful.screen.focused().dpi))
   end, { description = "rofi run", group = "launcher" }),
   awful.key({ modkey }, "w", function()
-    awful.spawn.with_shell(C.apps.window_searcher)
+    awful.spawn.with_shell(("rofi -show window -config %s -dpi %s"):format(rofi_config, awful.screen.focused().dpi))
   end, { description = "rofi window", group = "launcher" }),
 
   -- TODO: lauch colorpicker, screenshoter
@@ -337,8 +338,8 @@ awful.mouse.append_global_mousebindings {
   awful.button({}, 3, function()
     menu:toggle()
   end),
-  awful.button({}, 4, awful.tag.viewnext),
-  awful.button({}, 5, awful.tag.viewprev),
+  awful.button({}, 4, awful.tag.viewprev),
+  awful.button({}, 5, awful.tag.viewnext),
   awful.button({ "Control" }, 4, function()
     require("service.volume").set("1%+")
   end),

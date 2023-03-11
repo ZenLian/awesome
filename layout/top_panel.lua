@@ -44,6 +44,7 @@ local top_panel = function(s)
 
   s.layoutbox = widget.layoutbox(s)
   s.right_toggler = widget.right_toggler()
+  s.wallpaper_switcher = widget.wallpaper_switcher(s)
 
   panel:setup {
     layout = wibox.layout.align.horizontal,
@@ -65,6 +66,7 @@ local top_panel = function(s)
         s.systray,
         s.syscontrol,
         s.clock,
+        s.wallpaper_switcher,
         s.layoutbox,
         s.right_toggler,
       },
